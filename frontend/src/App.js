@@ -1,14 +1,8 @@
-import React, { useState, useContext, createContext } from 'react';
-import { Upload, FileText, Users, Eye, Download, Share2, Clock, Shield, Plus, X, Check, AlertCircle, User, Calendar, Tag } from 'lucide-react';
+import React, { useState, createContext } from 'react';
+import { Upload, FileText, Users, Eye, Share2, Clock, Shield, Check, User } from 'lucide-react';
 
 // Auth Context
 const AuthContext = createContext();
-
-const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) throw new Error('useAuth must be used within AuthProvider');
-  return context;
-};
 
 // Mock Data & Constants
 const DOCUMENT_CATEGORIES = {
@@ -17,12 +11,6 @@ const DOCUMENT_CATEGORIES = {
   banking: { name: 'Banking & Financial', icon: Shield, color: 'bg-purple-100 text-purple-800' },
   loans: { name: 'Loans & Mortgages', icon: Users, color: 'bg-orange-100 text-orange-800' },
   insurance: { name: 'Insurance', icon: Eye, color: 'bg-indigo-100 text-indigo-800' }
-};
-
-const PROFESSIONAL_ROLES = {
-  cpa: { name: 'CPA / Tax Professional', allowedCategories: ['tax', 'income'], icon: User },
-  loan_officer: { name: 'Loan Officer', allowedCategories: ['income', 'banking', 'loans'], icon: Users },
-  financial_advisor: { name: 'Financial Advisor', allowedCategories: ['banking', 'insurance'], icon: Shield }
 };
 
 // Mock API Functions
@@ -469,7 +457,7 @@ const Dashboard = () => {
 
 // Auth Provider
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({ 
+  const [user] = useState({ 
     id: 'user_1', 
     email: 'john@example.com', 
     firstName: 'John', 

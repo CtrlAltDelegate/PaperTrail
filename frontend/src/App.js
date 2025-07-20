@@ -1,4 +1,4 @@
-javascriptimport React, { useState, useContext, createContext } from 'react';
+import React, { useState, useContext, createContext } from 'react';
 import { Upload, FileText, Users, Eye, Download, Share2, Clock, Shield, Plus, X, Check, AlertCircle, User, Calendar, Tag } from 'lucide-react';
 
 // Auth Context

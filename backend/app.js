@@ -1,3 +1,22 @@
+javascript// Add these imports at the top
+const { Pool } = require('pg');
+
+// Database connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || 'postgresql://papertrail_user:papertrail_pass@localhost:5432/papertrail',
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+
+// Test database connection
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error('❌ Database connection failed:', err.stack);
+    console.log('🔧 Make sure PostgreSQL is running: docker-compose up -d');
+  } else {
+    console.log('✅ Database connected successfully');
+    release();
+  }
+});
 // app.js - Main Express application
 const express = require('express');
 const cors = require('cors');
